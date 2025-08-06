@@ -6,7 +6,6 @@ import hashlib
 import requests
 from dotenv import load_dotenv
 
-# Untuk dev lokal (pakai .env)
 load_dotenv()
 
 app = FastAPI()
@@ -14,7 +13,7 @@ app = FastAPI()
 API_KEY = os.getenv("API_KEY")
 API_SECRET = os.getenv("API_SECRET")
 ORG_ID = os.getenv("ORG_ID")
-TO_ADDRESS = os.getenv("TO_ADDRESS")  # Alamat wallet BTC dari Indodax
+TO_ADDRESS = os.getenv("TO_ADDRESS") 
 
 def get_nonce():
     return str(int(time.time() * 1000))
@@ -41,6 +40,7 @@ def mining_status():
         "X-Organization-Id": ORG_ID,
         "Content-Type": "application/json"
     }
+    
     print("🔐 Nonce:", nonce)
     print("🔐 Signature:", sig)
     print("🔐 Header:", headers)
